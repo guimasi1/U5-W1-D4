@@ -25,4 +25,9 @@ public class TablesService {
         return tablesDAO.findByMaxNumberOfGuests(maxNumberOfGuests);
     }
 
+    public List<Table> findByIsOccupiedTrue() {
+        return tablesDAO.findByIsOccupiedTrue();
+    }
+
+
 }

@@ -25,6 +25,6 @@ public class MyRunner implements CommandLineRunner {
         tablesService.saveTable(table);
         //System.out.println(tablesService.findTableById(1));
         tablesService.findByMaxNumberOfGuests(5).forEach(System.out::println);
-
+        tablesService.findByIsOccupiedTrue().forEach(System.out::println);
     }
 }
