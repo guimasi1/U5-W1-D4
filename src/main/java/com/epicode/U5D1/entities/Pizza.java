@@ -1,15 +1,30 @@
 package com.epicode.U5D1.entities;
 
+import jakarta.persistence.*;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
 @Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "pizzas")
 public class Pizza extends Item {
-	private String name;
 
+	private String name;
 	@Getter
+	@ManyToMany
+	@JoinTable(name= "toppings_pizzas",joinColumns = @JoinColumn(name = "pizzas"), inverseJoinColumns =@JoinColumn (name = "toppings"))
 	private List<Topping> toppingList;
+	@ManyToOne
+	@JoinColumn(name = "menu_id")
+	private Menu menu;
 	private boolean isXl = false;
 
 	public Pizza(String name, List<Topping> toppingList, boolean isXl) {

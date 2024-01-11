@@ -1,5 +1,6 @@
 package com.epicode.U5D1.entities;
 
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
@@ -11,16 +12,33 @@ import org.springframework.beans.factory.annotation.Value;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
-// Serve per specificare come si chiama il file con le var d'ambiente
+@Entity
+/*@jakarta.persistence.Table(name = "orders")*/
 public class Order {
 
+    @Id
+    @GeneratedValue
+    long orderNumber;
+
+    @ManyToMany
+    @JoinTable(name = "items_orders",
+            joinColumns = @JoinColumn(name = "item"),
+            inverseJoinColumns = @JoinColumn(name = "order"))
     List<Item> items;
-    int orderNumber;
+
+    @Enumerated(EnumType.STRING)
     OrderStatus orderStatus;
+
+    @ManyToOne
+    @JoinColumn(name = "table_id")
     Table table;
+
     int numberOfGuests;
+
     LocalDateTime orderPlacementTime;
+
     double totalCost;
 
     public Order(List<Item> items, int orderNumber, OrderStatus orderStatus, Table table, int numberOfGuests, LocalDateTime orderPlacementTime,double coverFee) {

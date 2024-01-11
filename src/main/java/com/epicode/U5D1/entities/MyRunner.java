@@ -1,7 +1,9 @@
 package com.epicode.U5D1.entities;
 
 import com.epicode.U5D1.U5D1Application;
+import com.epicode.U5D1.dao.TablesService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
@@ -10,14 +12,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyRunner implements CommandLineRunner {
 
+    @Autowired
+    TablesService tablesService;
+
     @Override
     public void run(String... args) throws Exception {
+
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(U5D1Application.class);
-        Table table1 = (Table) ctx.getBean("table");
-        Order order1 = (Order) ctx.getBean("order1");
-        Menu menu = (Menu) ctx.getBean("menu");
-        log.info("Costo totale dell'ordine:" + order1.getTotalCost());
-        log.info("Dettagli dell'ordine:" + order1);
+
+        Table table = new Table(5);
+        tablesService.saveTable(table);
+        System.out.println(tablesService.findTableById(1));
 
     }
 }

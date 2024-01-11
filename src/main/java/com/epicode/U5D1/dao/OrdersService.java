@@ -1,0 +1,10 @@
+package com.epicode.U5D1.dao;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class OrdersService {
+    @Autowired
+    OrdersDAO ordersDAO;
+}
