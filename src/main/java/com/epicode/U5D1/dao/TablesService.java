@@ -28,6 +28,8 @@ public class TablesService {
     public List<Table> findByIsOccupiedTrue() {
         return tablesDAO.findByIsOccupiedTrue();
     }
-
+    public List<Table> findByIsOccupiedFalse() {
+        return tablesDAO.findByIsOccupiedFalse();
+    }
 
 }

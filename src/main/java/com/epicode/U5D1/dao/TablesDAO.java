@@ -10,4 +10,8 @@ import java.util.List;
 public interface TablesDAO extends JpaRepository<Table, Long> {
      List<Table> findByMaxNumberOfGuests(int maxNumberOfGuests);
      List<Table> findByIsOccupiedTrue();
+
+     List<Table> findByIsOccupiedFalse();
+
+
 }
