@@ -1,19 +1,16 @@
 package com.epicode.U5D1.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.boot.autoconfigure.web.WebProperties;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Data
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -22,7 +19,7 @@ import java.util.List;
 */
 public class Table {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     long tableNumber;
 
     @OneToMany(mappedBy = "table")
@@ -39,5 +36,14 @@ public class Table {
     public Table(int maxGuests) {
         this.maxNumberOfGuests = maxGuests;
         this.isOccupied = false;
+    }
+
+    @Override
+    public String toString() {
+        return "Table{" +
+                "tableNumber=" + tableNumber +
+                ", maxNumberOfGuests=" + maxNumberOfGuests +
+                ", isOccupied=" + isOccupied +
+                '}';
     }
 }

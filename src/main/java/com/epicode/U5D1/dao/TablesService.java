@@ -21,8 +21,8 @@ public class TablesService {
         return tablesDAO.findById(id).orElseThrow(()-> new ItemNotFoundException(id));
     }
 
-/*    public List<Table> findByMaxNumberOfGuests(int maxNumberOfGuests) {
+    public List<Table> findByMaxNumberOfGuests(int maxNumberOfGuests) {
         return tablesDAO.findByMaxNumberOfGuests(maxNumberOfGuests);
-    }*/
+    }
 
 }

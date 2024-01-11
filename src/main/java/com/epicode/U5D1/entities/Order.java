@@ -19,7 +19,7 @@ import org.springframework.beans.factory.annotation.Value;
 public class Order {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     long orderNumber;
 
     @ManyToMany

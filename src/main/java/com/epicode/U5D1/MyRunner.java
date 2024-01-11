@@ -1,7 +1,8 @@
-package com.epicode.U5D1.entities;
+package com.epicode.U5D1;
 
 import com.epicode.U5D1.U5D1Application;
 import com.epicode.U5D1.dao.TablesService;
+import com.epicode.U5D1.entities.Table;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -22,7 +23,8 @@ public class MyRunner implements CommandLineRunner {
 
         Table table = new Table(5);
         tablesService.saveTable(table);
-        System.out.println(tablesService.findTableById(1));
+        //System.out.println(tablesService.findTableById(1));
+        tablesService.findByMaxNumberOfGuests(5).forEach(System.out::println);
 
     }
 }
